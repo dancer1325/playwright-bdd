@@ -40,7 +40,7 @@
   * [CucumberJS](https://github.com/cucumber/cucumber-js) test runner
 * ways to run BDD scenarios
   * CucumberJS runner + [Playwright as a library](https://playwright.dev/docs/library)  
-  * BDD scenarios / converted | test files + Playwright test runner
+  * ⭐️BDD scenarios / converted | test files + Playwright test runner ⭐️ 
     * 💡this project 💡
     * advantages
       * Playwright runner's advantages
