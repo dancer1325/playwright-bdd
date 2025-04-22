@@ -1,15 +1,13 @@
+* [index](_sidebar.md)
+
 ## Quick start
 * [getting started](getting-started/index.md)
 
 ## steps
 
-* 
-    ```
-    npx bddgen && npx playwright test
-    ```
+* `npx bddgen && npx playwright test`
   * `npx bddgen`
     * from BDD feature files -- generate -- test files
-
         ```gherkin
         Feature: Playwright Home Page
         
@@ -32,7 +30,6 @@
         
         });
         ```
-
   * `npx playwright test`
     * runs the generated files -- with the -- Playwright runner
       * step definitions have -- access to the -- Playwright APIs & fixtures (_Example:_ `page`)
