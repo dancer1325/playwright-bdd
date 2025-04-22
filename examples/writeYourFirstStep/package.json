@@ -1,0 +1,16 @@
+{
+  "name": "writeyourfirststep",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx bddgen && npx playwright test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.52.0",
+    "playwright-bdd": "^8.2.1"
+  }
+}

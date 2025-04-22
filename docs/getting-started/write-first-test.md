@@ -1,12 +1,10 @@
 # Write your first BDD test
 
-Follow the steps below to create and run your first BDD test with Playwright-BDD.
+* goal
+  * create & run your FIRST BDD test -- with -- Playwright-BDD
 
-?> This guide uses JavaScript for simplicity, but you can use TypeScript as well.
-
-### Step 1: Create configuration file
-
-Create the following `playwright.config.js` in the project root:
+## steps
+### Step 1: Create "playwright.config.js" | project's root
 
 ```js
 import { defineConfig } from '@playwright/test';
@@ -25,9 +23,7 @@ export default defineConfig({
 
 ### Step 2: Create feature file
 
-Create a feature file named `sample.feature`:
-
-```gherkin
+```gherkin, title="sample.feature"
 Feature: Playwright site
 
     Scenario: Check get started link
@@ -38,9 +34,12 @@ Feature: Playwright site
 
 ### Step 3: Implement steps
 
-Implement the steps in `steps.js`:
+* ways to define steps
+  * [Playwright-style syntax](../writing-steps/playwright-style.md)
+  * [Decorators](../writing-steps/decorators.md)
+  * [Cucumber-style syntax](../writing-steps/cucumber-style.md)
 
-```ts
+```ts,title=index.ts
 import { expect } from '@playwright/test';
 import { createBdd } from 'playwright-bdd';
 
@@ -59,65 +58,41 @@ Then('I see in title {string}', async ({ page }, keyword) => {
 });
 ```
 
-> There are alternative ways of defining steps: [Decorators](writing-steps/decorators.md) and [Cucumber-style syntax](writing-steps/cucumber-style.md).
+## how to run tests?
 
-### Step 4: Run tests
+* generate & run the tests
+  * ways
+    * -- via -- npm
+      ```
+      npx bddgen && npx playwright test
+      ```
+    * -- via -- Yarn
+      ```
+      yarn bddgen && yarn playwright test
+      ```
+    * -- via -- pnpm
+      ```
+      pnpm bddgen && pnpm playwright test
+      ```
+  * check the [generated files](".features-gen/")   
+    ```js
+    // Generated from: sample.feature
+    import { test } from 'playwright-bdd';
+    
+    test.describe('Playwright site', () => {
+    
+      test('Check get started link', async ({ Given, When, Then }) => {
+        await Given('I am on home page');
+        await When('I click link "Get started"');
+        await Then('I see in title "Installation"');
+      });
+    
+    });
+    ```
+* `npx playwright show-report`
+  * generate HTML report
+  ![Playwright HTML report](./_media/playwright-report.png ':size=70%')
 
-Generate and run the tests:
-
-```
-npx bddgen && npx playwright test
-```
-
-Command for **Yarn**
-```
-yarn bddgen && yarn playwright test
-```
-
-Command for **pnpm**:
-```
-pnpm bddgen && pnpm playwright test
-```
-
-Output:
-
-```
-Running 1 test using 1 worker
-1 passed (2.0s)
-
-To open the last HTML report, run:
-
-npx playwright show-report
-```
-
-HTML report:
-
-![Playwright HTML report](./_media/playwright-report.png ':size=70%')
-
-### Step 5: Check the generated tests (optional)
-
-Check out the `.features-gen` directory to see what the generated tests look like.
-You will see something like this:
-
-```js
-// Generated from: sample.feature
-import { test } from 'playwright-bdd';
-
-test.describe('Playwright site', () => {
-
-  test('Check get started link', async ({ Given, When, Then }) => {
-    await Given('I am on home page');
-    await When('I click link "Get started"');
-    await Then('I see in title "Installation"');
-  });
-
-});
-```
-
-?> Here is a fully working Playwright-BDD example project: [playwright-bdd-example](https://github.com/vitalets/playwright-bdd-example).
-
-> Don't forget to [git-ignore generated files](guides/ignore-generated-files.md).
-
-!> If your project uses [ES Modules](https://nodejs.org/api/esm.html), please check out [ESM configuration](configuration/esm.md).
-
-
+## _Examples:_
+* [here](../../examples/writeYourFirstStep)
+* [ANOTHER example](https://github.com/vitalets/playwright-bdd-example)
