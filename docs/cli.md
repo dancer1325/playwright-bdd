@@ -1,37 +1,40 @@
 # CLI
 
-## `bddgen test` (or just `bddgen`)
-Generates Playwright test files from Gherkin documents (`.feature` files).
-This command is typically followed by `npx playwright test` to run the generated tests. 
-It also assumes that there is a `playwright.config.(ts|js)` with one or several calls of [`defineBddConfig()`](configuration/index.md).
+## `bddgen test` OR `bddgen`
 
-Examples:
+* 👀FROM Gherkin documents (".feature") -- generate -- Playwright test files 👀
+* use cases
+  * BEFORE `npx playwright test`
+* requirements
+  * "playwright.config.(ts|js)" / contains >=1 [`defineBddConfig()`](configuration/index.md)
 
-* Generate and run test files using `playwright.config.ts` in the default location (working directory):
-    ```
-    npx bddgen && npx playwright test
-    ```
-    
-* Use the `--tags` option to generate tests with [filtering by tags](https://cucumber.io/docs/cucumber/api/?lang=javascript#tag-expressions):
-    ```
-    npx bddgen --tags "@foo and not @bar" && npx playwright test
-    ```
-
-* Use the `-c` / `--config` option to set a custom config. Note: the same config should be provided to both `bddgen` and `playwright test` commands:
-    ```
-    npx bddgen -c path/to/playwright.config.ts && npx playwright test -c path/to/playwright.config.ts
-    ```
-
-* Use `-h` to show help:
-    ```
-    npx bddgen test -h
-    # or to show global help
-    npx bddgen -h
-    ```
+* _Examples:_ TODO: Create examples to run it
+  * `npx bddgen && npx playwright test`
+    * generate & run test files / use "playwright.config.ts" | default location
+  * `npx bddgen --tags "@foo and not @bar" && npx playwright test`
+    * `--tags` 
+      * == option / generate tests -- with -- [filtering by tags](https://cucumber.io/docs/cucumber/api/?lang=javascript#tag-expressions)
+  * `-c` / `--config`
+    * == option / set a CUSTOM config 
+    * SAME | `bddgen` & `playwright test` commands
+      ```
+      npx bddgen -c path/to/playwright.config.ts && npx playwright test -c path/to/playwright.config.ts
+      ```
+  * `-h`
+    * show help
+      ```
+      npx bddgen test -h
+      # or to show global help
+      npx bddgen -h
+      ```
 
 ## `bddgen export`
-Prints a list of all found step definitions. 
-Useful for [generating BDD scenarios with ChatGPT](writing-features/chatgpt.md).
+
+* prints a list of ALL found step definitions 
+* uses
+  * [generate BDD scenarios -- with -- ChatGPT](writing-features/chatgpt.md)
+
+* _Example:_ TODO: Create examples to run it
 ```
 $ npx bddgen export
 ```
@@ -45,12 +48,17 @@ List of all steps (4):
 * When I remove todo {string}
 * Then visible todos count is {int}
 ```
+
 #### Options
-* `--config` - path to Playwright config
-* `--unused-steps` - output only unused steps
+* `--config pathToPlaywrightConfig`
+* `--unused-steps`
+  * output ONLY UNUSED steps
 
 ## `bddgen env`
-Displays info about the current environment:
+
+* displays info -- about the -- CURRENT environment
+
+* _Example:_ TODO: Create examples to run it
 ```
 $ npx bddgen env
 ```
