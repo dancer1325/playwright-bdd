@@ -1,34 +1,39 @@
-# Add fixtures
+# Add Playwright fixtures
 
-As your tests grow, you will most likely need some Playwright [fixtures](https://playwright.dev/docs/test-fixtures). This means you will use a custom `test` instance, created with `test.extend()`. For such cases, you should pass the custom test instance into the `createBdd()` function to have access to all your fixtures inside step definitions.
+* uses
+  * your tests grow
+* [Playwright fixtures](https://playwright.dev/docs/test-fixtures)
+* steps
+  * use a CUSTOM `test` instance -- via -- `test.extend()` 
+  * if you want to have access | ALL your step definitions' fixtures -> pass the custom test instance | `createBdd()` 
 
 ### Recommended setup
 
-Call `createBdd(test)` in the same file where you define the custom test and export `test` and `Given / When / Then`:
-
-```ts
-// fixtures.ts
-import { test as base, createBdd } from 'playwright-bdd';
-
-export const test = base.extend({
-  myFixture: async ({ page }, use) => {
-    // ... define your fixture here
-  }
-});
-
-export const { Given, When, Then } = createBdd(test);
-```
-
-> Make sure to export the `test` variable, because it is used in generated test files.
-
-Now you can write step definitions with custom fixtures:
-
-```ts
-// steps.ts
-
-import { Given, When, Then } from './fixtures';
-
-Given('My step', async ({ myFixture }) => {
-  // step code that uses myFixture
-});
-```
+* | SAME file
+  * define the CUSTOM `test` / export it
+    * Reason: 🧠export it, because it's used | generated test files 🧠
+  * `createBdd(test)`
+  * export `Given / When / Then`
+    ```ts
+    // fixtures.ts
+    import { test as base, createBdd } from 'playwright-bdd';
+    
+    export const test = base.extend({
+      myFixture: async ({ page }, use) => {
+        // ... define your fixture here
+      }
+    });
+    
+    export const { Given, When, Then } = createBdd(test);
+    ```
+* | step definitions
+  * write step definitions / CUSTOM fixtures
+    ```ts
+    // steps.ts
+    
+    import { Given, When, Then } from './fixtures';
+    
+    Given('My step', async ({ myFixture }) => {
+      // step code that uses myFixture
+    });
+    ```
