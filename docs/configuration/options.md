@@ -2,45 +2,64 @@
 
 ## features
 
-?> Since Playwright-BDD **v7**, this option has replaced Cucumber's `paths`.
-
-- **Type:** `string | string[]`
-- **Default:** `undefined`
-
-Path(s) to feature files. Can be a directory or [glob pattern](https://github.com/mrmlnc/fast-glob?tab=readme-ov-file#pattern-syntax).
-Example: `features/**/*.feature`.
-If you don't specify a file extension, the default is `*.feature`.
-Resolved relative to the config file location.
-
-> Since Playwright-BDD **v8**, you can omit the `features` option and define [`featuresRoot`](#featuresroot), which serves as a common base directory for both features and steps. The features glob pattern will be calculated as `{featuresRoot} + /**/*.feature`.
+* | Playwright-BDD v7,
+  * replacement of Cucumber's `paths`
+* | Playwright-BDD v8,
+  * `features` option -- can be replaced by -- [`featuresRoot`](#featuresroot)
+- **Type:**
+  - `string | string[]`
+- **Default:**
+  - `undefined`
+* == 👀Path(s) to feature files👀
+  * ⚠️resolved -- relative to the -- config file location⚠️
+* ALLOWED values
+  * are
+    * directory
+    * [glob pattern](https://github.com/mrmlnc/fast-glob?tab=readme-ov-file#pattern-syntax)
+      * _Example:_ `features/**/*.feature`
+  * if you do NOT specify a file extension -> by default, `*.feature`
 
 ## steps
 
-?> Since v7, this option replaced Cucumber's `require`, `import`, and `requireModule`.
-
-- **Type:** `string | string[]`
-- **Default:** `undefined`
-
-Path(s) to step definitions. Can be a directory or [glob pattern](https://github.com/mrmlnc/fast-glob?tab=readme-ov-file#pattern-syntax).
-Example: `steps/**/*.ts`.
-If you don't specify a file extension, the default is `*.{js,mjs,cjs,ts,mts,cts}`.
-Resolved relative to the config file location.
-
-> Since Playwright-BDD **v8**, you can omit the `steps` option and define [`featuresRoot`](#featuresroot), which serves as a common base directory for both features and steps. The steps glob pattern will be calculated as `{featuresRoot} + /**/*.{js,mjs,cjs,ts,mts,cts}`.
+* | Playwright-BDD v7,
+  * replacement of Cucumber's `require`, `import`, and `requireModule`
+* | Playwright-BDD v8,
+  * `features` option -- can be replaced by -- [`featuresRoot`](#featuresroot)
+- **Type:**
+  - `string | string[]`
+- **Default:**
+  - `undefined`
+* == 👀Path(s) to step definitions👀 
+  * ⚠️resolved -- relative to the -- config file location⚠️
+* ALLOWED values
+  * are
+    * directory
+    * [glob pattern](https://github.com/mrmlnc/fast-glob?tab=readme-ov-file#pattern-syntax)
+      * _Example:_ `steps/**/*.ts`
+  * if you do NOT specify a file extension -> by default, `*.{js,mjs,cjs,ts,mts,cts}`
 
 ## outputDir
 
-- **Type:** `string`
-- **Default:** `.features-gen`
-
-Directory to output generated test files. Resolved relative to the config file location.
+- **Type:**
+  - `string`
+- **Default:**
+  - `.features-gen`
+* == directory | output generated test files
+  * ⚠️resolved -- relative to the -- config file location⚠️
 
 ## featuresRoot
-
+* TODO:
 - **Type:** `string`
 - **Default:** *location of config file*
 
-Base directory to construct generated file paths inside `outputDir`. Resolved relative to the config file location. Note that `featuresRoot` is a directory and cannot contain glob patterns (`*`).
+> which serves as a common base directory for both features and steps.
+> The features glob pattern will be calculated as `{featuresRoot} + /**/*.feature`.
+> 
+> > The steps glob pattern will be calculated as `{featuresRoot} + /**/*.{js,mjs,cjs,ts,mts,cts}`.
+
+Base directory to construct generated file paths inside `outputDir`. 
+Resolved relative to the config file location. 
+Note that `featuresRoot` is a directory and cannot contain glob patterns (`*`).
 
 The behavior is similar to TypeScript's [rootDir](https://www.typescriptlang.org/tsconfig#rootDir) option, which sets a common parent for all `.ts` files and defines the `outDir` structure.
 
@@ -103,13 +122,15 @@ const testDir = defineBddConfig({
 
 ## language
 
-- **Type:** `string`
-- **Default:** `en`
-
-Default [language](https://cucumber.io/docs/gherkin/reference/#spoken-languages) for your feature files. 
+- **Type:**
+  - `string`
+- **Default:**
+  - `en`
+* == your feature files' default [language](https://cucumber.io/docs/gherkin/reference/#spoken-languages)  
 
 ## aiFix
 
+* TODO:
 - **Type:** `object`
 - **Default:** `undefined`
 
