@@ -1,8 +1,9 @@
-# Multiple projects
-You can use Playwright-BDD with multiple [Playwright projects](https://playwright.dev/docs/test-projects). 
+# Multiple Playwright projects
+* Playwright-BDD | MULTIPLE [Playwright projects](https://playwright.dev/docs/test-projects) 
 
 ## Same feature files
 
+* TODO:
 If all projects use **the same set of feature files**, you can define a single `testDir` option at the root level of the config:
 ```ts
 import { defineConfig, devices } from '@playwright/test';
