@@ -53,7 +53,7 @@
       - ♻️ [Re-usable step functions](docs/writing-steps/reusing-step-fn)
 
 ## Documentation
-* [here](docs)
+* [here](docs/index.md)
 
 ## Examples
 * [here](/examples) 

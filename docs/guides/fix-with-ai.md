@@ -1,66 +1,33 @@
 # Fix with AI
 
-> This is an **experimental** feature, feel free to share your feedback in the [issues](https://github.com/vitalets/playwright-bdd/issues).
+* requirements
+   * ⚠️**Playwright v1.49+** ⚠️
+     * Reason:🧠it includes [ARIA-snapshots](https://playwright.dev/docs/release-notes#aria-snapshots)🧠
+   * ⚠️Playwright-BDD **v8.1.0**⚠️
+* == ⚠️ **experimental** feature⚠️/
+  * enable you
+    * fix failing tests -- via -- AI suggestions
+  * use case
+    * | test fails, Playwright-BDD 
+      * pre-generates an AI prompt
+        * == Error message + Scenario steps + Test code snippet + [page's ARIA snapshot](https://playwright.dev/docs/aria-snapshots)
+        * [template](/src/ai/promptTemplate.ts)
+      * attaches AI prompt | report
 
-Playwright-BDD **v8.1.0** introduced a new feature called **Fix with AI**. It helps you quickly fix failing tests with AI suggestions.
+      ![Prompt attachment](./_media/prompt-attachment.png)
 
-When a test fails, Playwright-BDD pre-generates an AI prompt and attaches it to the report.
-You can copy-paste this prompt to your favorite AI chat and get suggestions on how to fix the test.
+  * steps to use it
+    * copy pre-generated AI prompt
+    * | your favorite AI chat,
+      * paste it
+      * get suggestions -- about -- how to fix it
 
-The prompt contains the relevant context of the test:
+## how to enable?
 
-- Error message
-- Scenario steps
-- Test code snippet
-- [ARIA snapshot](https://playwright.dev/docs/aria-snapshots) of the page
-
-Example of the prompt attachment:
-
-![Prompt attachment](./_media/prompt-attachment.png)
-
-<details>
-  <summary>Prompt template:</summary>
-
-```
-You are an expert in Playwright BDD testing.
-Fix the error in the BDD scenario.
-
-- Provide response as a diff highlighted code snippet.
-- First, try to fix the test by adjusting Gherkin steps parameters.
-- If the test is not fixable by Gherkin, try to modify the code snippet.
-- Strictly rely on the ARIA snapshot of the page.
-- Avoid adding any new code.
-- Avoid adding comments to the code.
-- Avoid changing the test logic.
-- Use only role-based locators: getByRole, getByLabel, etc.
-- Add a concise note about applied changes.
-- If the test may be correct and there is a bug in the page, note it.
-
-Failing gherkin scenario: 
-
-Scenario: {scenarioName}
-{steps}
-
-Error details:
-{error}
-
-{snippet}
-
-ARIA snapshot of the page:
-
-{ariaSnapshot}
-```
-
-</details>
-
-## How to enable
-
-1. Ensure you’re on **Playwright v1.49** or newer. The Fix with AI feature requires [ARIA-snapshots](https://playwright.dev/docs/release-notes#aria-snapshots) 
-to be available. 
-
-2. Ensure you’re on **Playwright-BDD v8.1.0** or newer
-
-3. Add the `aiFix` section to the BDD config:
+* steps
+  * | BDD config,
+    * add 
+ 
     ```js
     const testDir = defineBddConfig({
       aiFix: {
@@ -69,8 +36,6 @@ to be available.
       // ...other options
     });
     ```
-
-That's it. Now you can run the failing test and check out the HTML reports.
 
 ### Playwright HTML report
 
